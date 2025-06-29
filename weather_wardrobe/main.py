@@ -9,16 +9,20 @@ WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
 @app.route("/recommend")
 def recommend():
     city = request.args.get('city')
+    record_request("recommend_total")  # Track every request
     if not city:
-        record_request(success=False)
+        record_request("recommend_error")
         return jsonify({"error": "City parameter is required"}), 400
     if not WEATHER_API_KEY:
-        record_request(success=False)
+        record_request("recommend_error")
         return jsonify({"error": "Server error: Weather API key is not configured"}), 500
     try:
         recommendation = get_outfit_recommendation(city, WEATHER_API_KEY)
-        record_request(success=True)
+        record_request("recommend_success")
         return jsonify({"outfit": recommendation})
     except Exception as e:
-        record_request(success=False)
+        record_request("recommend_error")
         return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)

@@ -3,22 +3,26 @@ name = "weather-wardrobe"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Pratheep56",email = "pratheep0610@gmail.com"}
+    {name = "Pratheep56", email = "pratheep0610@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "flask (>=3.1.1,<4.0.0)",
-    "requests (>=2.32.4,<3.0.0)",
-    "gunicorn (>=23.0.0,<24.0.0)",
-    "statsd (>=4.0.1,<5.0.0)"
+    "flask >=3.1.1,<4.0.0",
+    "requests >=2.32.4,<3.0.0",
+    "gunicorn >=23.0.0,<24.0.0",
+    "statsd >=4.0.1,<5.0.0"
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry]
+name = "weather-wardrobe"
+version = "0.1.0"
+description = "A weather-based outfit recommender"
+authors = ["Pratheep56 <pratheep0610@gmail.com>"]
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"
-
