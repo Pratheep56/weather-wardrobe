@@ -8,7 +8,7 @@ venv/
 .envrc
 .mypy_cache/
 .poetry/
-poetry.lock
+#poetry.lock
 __pypackages__/
 dist/
 build/
