@@ -4,6 +4,27 @@ services:
   weather-wardrobe:
     image: pratheep2006/weather-wardrobe
     ports:
-      - "8001:5000"
+      - "8001:5000"  # App exposed on http://localhost:8001
     env_file:
       - .env
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "4000:3000"  # Grafana on http://localhost:4000
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - graphite
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    ports:
+      - "9091:80"     # Graphite web UI on http://localhost:9090
+      - "2003:2003"   # Carbon receiver
+      - "8125:8125/udp" # StatsD UDP listener
+
+volumes:
+  grafana-storage:
