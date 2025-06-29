@@ -9,7 +9,7 @@ WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
 @app.route("/recommend")
 def recommend():
     city = request.args.get('city')
-    record_request("recommend_total")  # Track every request
+    record_request("recommend_total")
     if not city:
         record_request("recommend_error")
         return jsonify({"error": "City parameter is required"}), 400
@@ -26,3 +26,8 @@ def recommend():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
+
+@app.route("/")
+def home():
+    return "Weather-Wardrobe backend is running! Use /recommend?city=CityName"
+
