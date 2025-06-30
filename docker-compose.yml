@@ -4,7 +4,7 @@ services:
   weather-wardrobe:
     image: pratheep2006/weather-wardrobe
     ports:
-      - "8001:5000"  # App exposed on http://localhost:8001
+      - "8080:8001"  # App exposed on http://localhost:8001
     env_file:
       - .env
 

@@ -10,6 +10,7 @@ COPY weather_wardrobe ./weather_wardrobe
 RUN poetry config virtualenvs.create false \
  && poetry install --without dev --no-root
 
-EXPOSE 5000
+EXPOSE 8080
 CMD ["python", "-m", "weather_wardrobe.main"]
+
 
